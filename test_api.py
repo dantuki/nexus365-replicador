@@ -26,12 +26,15 @@ async def test_auth():
     }
 
     async with httpx.AsyncClient(timeout=10.0) as client:
-        print("Probando petición autenticada al endpoint /authentication/me...")
-        response = await client.get(f"{API_BASE_URL}/authentication/me", headers=headers)
+        print("Probando petición al endpoint /users/me...")
+        response = await client.get(f"{API_BASE_URL}/users/me", headers=headers)
         
         print(f"Código de respuesta HTTP: {response.status_code}")
-        print("Datos del usuario/sesión:")
-        print(response.json())
+        if response.status_code == 200:
+            print("Conexión exitosa. Datos de la cuenta:")
+            print(json.dumps(response.json(), indent=2))
+        else:
+            print("Error en la petición:", response.text)
 
 if __name__ == "__main__":
     asyncio.run(test_auth())
