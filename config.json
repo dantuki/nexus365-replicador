@@ -1,0 +1,13 @@
+{
+  "city": "Pereira",
+  "specialties": [
+    "Plomería",
+    "Destaponamiento",
+    "Electricidad"
+  ],
+  "operating_hours": {
+    "start": "08:00",
+    "end": "17:00"
+  },
+  "poll_interval_ms": 300
+}
